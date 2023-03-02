@@ -71,4 +71,36 @@ get "/categories" do
   categories.to_json
 end
 
+
+require 'sinatra'
+require 'json'
+require 'jwt'
+require 'bcrypt'
+
+# Set secret key for JWT
+SECRET_KEY = 'my_secret_key'
+
+# Authenticate user and generate JWT token
+post '/login' do
+  # Get user credentials from request body
+  user_credentials = JSON.parse(request.body.read)
+
+  # Find user by email
+  user = User.find_by(email: user_credentials['email'])
+
+  # Check if user exists and password is correct
+  if user && user.verify_password(user_credentials['password'])
+    # Generate JWT token
+    token = JWT.encode({ user_id: user.id }, SECRET_KEY, 'HS256')
+
+    # Return token in response
+    { token: token }.to_json
+  else
+    # Return error message
+    { error: 'Invalid email or password' }.to_json
+  end
+end
+
+
+
 end
