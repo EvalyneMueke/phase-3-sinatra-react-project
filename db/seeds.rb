@@ -7,10 +7,10 @@ puts "🌱 Seeding tasks..."
 # Delete existing users from database
 
 
-# Seed data for users
-User.create(full_name: 'John Doe', email: 'johndoe@example.com', password_hash: 'password')
-User.create(full_name: 'Jane Doe', email: 'janedoe@example.com', password_hash: 'password')
-User.create(full_name: 'Bob Smith', email: 'bobsmith@example.com', password_hash: 'password')
+#Seed data for users
+User.create(full_name: 'John Doe', email: 'johndoe@example.com', password_digest: '1234')
+User.create(full_name: 'Jane Doe', email: 'janedoe@example.com', password_digest: '12345')
+User.create(full_name: 'Bob Smith', email: 'bobsmith@example.com', password_digest: '123456')
 
 
 
