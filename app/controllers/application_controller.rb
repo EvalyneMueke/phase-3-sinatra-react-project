@@ -71,6 +71,11 @@ get "/categories" do
   categories.to_json
 end
 
+get "/users" do
+  users = User.all
+  users.to_json
+end
+
 
 require 'sinatra'
 require 'json'
