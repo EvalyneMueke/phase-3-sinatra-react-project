@@ -1,6 +1,9 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+  has_secure_password
+    validates :full_name, :email, :password_digest, presence: true
+    validates :full_name, :email, uniqueness: true
   has_many :tasks
 
   # Hash passwords with bcrypt before saving to database
