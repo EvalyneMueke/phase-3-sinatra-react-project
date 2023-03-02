@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
     belongs_to :category
-    belong to  :user
+    belongs_to  :user
     def self.all_items
         self.all.order(item: :asc).pluck(:item)
     end
